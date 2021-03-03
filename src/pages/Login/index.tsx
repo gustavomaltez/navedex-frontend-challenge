@@ -32,7 +32,7 @@ const Login: React.FC = () => {
       <Form ref={formRef} onSubmit={handleSubmit}>
         <img src={logoImg} alt="Logo" />
         <Input name="email" label="E-mail" />
-        <Input name="password" label="Senha" />
+        <Input name="password" label="Senha" type="password" />
         <button type="submit">Entrar</button>
       </Form>
     </Container>
