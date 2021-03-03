@@ -1,9 +1,10 @@
 import React from 'react';
+import GlobalStyle from './styles/global';
 
 const App: React.FC = () => (
-  <div className="App">
-    <p>Hello Nave!</p>
-  </div>
+  <>
+    <GlobalStyle />
+  </>
 );
 
 export default App;
