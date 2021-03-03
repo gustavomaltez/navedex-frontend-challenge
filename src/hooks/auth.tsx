@@ -39,9 +39,16 @@ const AuthProvider: React.FC = ({ children }) => {
   const signIn = useCallback(async ({ email, password }) => {
     const response = await api.post('/users/login', { email, password });
 
-    const { token, user } = response.data;
+    const { token, id } = response.data;
+
+    const user: User = {
+      email,
+      id,
+    };
+
     localStorage.setItem('@NaveDex:token', token);
     localStorage.setItem('@NaveDex:user', JSON.stringify(user));
+
     setData({ token, user });
   }, []);
 
