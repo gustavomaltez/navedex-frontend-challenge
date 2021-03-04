@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import { FiX } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
+import { differenceInYears } from 'date-fns';
 import { NaverInfosProps, useNaver } from '../../../hooks/naver';
 import { Container } from './styles';
 
@@ -18,6 +19,8 @@ const NaverDetailsModal: React.FC<Props> = ({
 
   const { deleteNaver } = useNaver();
 
+  const age = differenceInYears(new Date(), new Date(birthdate));
+  const timeInCompany = differenceInYears(new Date(), new Date(admission_date));
   const handleDeleteNaver = useCallback(() => {
     deleteNaver(id);
   }, [id, deleteNaver]);
@@ -42,12 +45,16 @@ const NaverDetailsModal: React.FC<Props> = ({
 
           <span>
             <strong>Idade</strong>
-            <p>{birthdate}</p>
+            <p>
+              {age} {age === 1 ? 'Ano' : 'Anos'}
+            </p>
           </span>
 
           <span>
             <strong>Tempo de empresa</strong>
-            <p>{admission_date}</p>
+            <p>
+              {timeInCompany} {timeInCompany === 1 ? 'Ano' : 'Anos'}
+            </p>
           </span>
 
           <span>
