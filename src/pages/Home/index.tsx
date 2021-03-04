@@ -28,6 +28,7 @@ const Home: React.FC = () => {
           Adicionar Naver
         </button>
       </section>
+
       <div>
         {naversList.map(naver => (
           <Naver data={naver} key={naver.id} />

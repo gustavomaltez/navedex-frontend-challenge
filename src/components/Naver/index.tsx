@@ -1,29 +1,28 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
-import { useNaver } from '../../hooks/naver';
+import { NaverInfosProps, useNaver } from '../../hooks/naver';
+import NaverDetailsModal from './NaverDetailsModal';
 import { Container } from './styles';
 
-interface NaverData {
-  id: string;
-  name: string;
-  admission_date: string;
-  job_role: string;
-  user_id: string;
-  project: string;
-  birthdate: string;
-  url: string;
-}
-
 interface Props {
-  data: NaverData;
+  data: NaverInfosProps;
 }
 
-const Naver: React.FC<Props> = ({ data: { name, job_role, url, id } }) => {
-  const history = useHistory();
+const Naver: React.FC<Props> = ({ data }) => {
+  const [showDetails, setShowDetails] = useState(false);
 
+  const history = useHistory();
+  const { id, url, job_role, name } = data;
   const { deleteNaver } = useNaver();
 
+  function handleCloseModal() {
+    setShowDetails(false);
+  }
+
+  function handleOpenModal() {
+    setShowDetails(true);
+  }
   const handleDeleteNaver = useCallback(() => {
     deleteNaver(id);
   }, [id, deleteNaver]);
@@ -33,15 +32,22 @@ const Naver: React.FC<Props> = ({ data: { name, job_role, url, id } }) => {
   }, [history, id]);
 
   return (
-    <Container>
-      <img src={url} alt={name} />
-      <strong>{name}</strong>
-      <p>{job_role}</p>
-      <div>
-        <FaTrash onClick={handleDeleteNaver} />
-        <FaPen onClick={handleEditNaver} />
-      </div>
-    </Container>
+    <>
+      {showDetails && (
+        <NaverDetailsModal data={data} onClose={handleCloseModal} />
+      )}
+      <Container>
+        <button type="button" onClick={handleOpenModal}>
+          <img src={url} alt={name} />
+        </button>
+        <strong>{name}</strong>
+        <p>{job_role}</p>
+        <div>
+          <FaTrash onClick={handleDeleteNaver} />
+          <FaPen onClick={handleEditNaver} />
+        </div>
+      </Container>
+    </>
   );
 };
 
