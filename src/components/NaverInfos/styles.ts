@@ -4,6 +4,10 @@ export const Container = styled.div`
   width: 50vw;
   margin: 3rem auto;
 
+  @media (max-width: 900px) {
+    width: 90vw;
+  }
+
   section {
     display: flex;
     flex-direction: row;
@@ -27,6 +31,10 @@ export const Container = styled.div`
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 1rem;
+
+      @media (max-width: 400px) {
+        grid-template-columns: 1fr;
+      }
     }
 
     button {
@@ -39,6 +47,10 @@ export const Container = styled.div`
       padding: 0.7rem;
       cursor: pointer;
       font-size: 1.1rem;
+
+      @media (max-width: 400px) {
+        width: 100%;
+      }
     }
   }
 `;
