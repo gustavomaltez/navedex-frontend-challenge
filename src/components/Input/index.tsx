@@ -29,6 +29,7 @@ const Input: React.FC<InputProps> = ({ name, label, ...rest }) => {
         ref={inputRef}
         defaultValue={defaultValue}
         placeholder={label}
+        required
         {...rest}
       />
     </Container>
