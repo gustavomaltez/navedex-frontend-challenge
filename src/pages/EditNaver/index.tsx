@@ -2,8 +2,7 @@ import React, { useCallback } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import Header from '../../components/Header';
 import NaverInfos, { NaverInfosProps } from '../../components/NaverInfos';
-import { useModal } from '../../hooks/modal';
-import api from '../../services/api';
+import { useNaver } from '../../hooks/naver';
 import { Container } from './styles';
 
 interface EditNaverParams {
@@ -13,36 +12,23 @@ interface EditNaverParams {
 const EditNaver: React.FC = () => {
   const { params } = useRouteMatch<EditNaverParams>();
 
-  const history = useHistory();
+  const { editNaver } = useNaver();
 
-  const { openModal } = useModal();
-
-  const handleSubmit = useCallback(
-    async (data: NaverInfosProps): Promise<void> => {
-      try {
-        await api.put(`/navers/${params.id}`, data);
-        openModal({
-          title: 'Naver atualizado',
-          text: 'Naver atualizado com sucesso',
-        });
-        history.goBack();
-      } catch (error) {
-        alert('Erro ao atualizar naver!');
-      }
-    },
-    [],
-  );
+  const handleSubmit = useCallback((formData: NaverInfosProps): void => {
+    const naverData = { ...formData, id: params.id };
+    editNaver(naverData);
+  }, []);
 
   return (
     <Container>
       <Header />
-      <main>
+      <div>
         <NaverInfos
           label="Editar Naver"
           id={params.id}
           onSubmit={handleSubmit}
         />
-      </main>
+      </div>
     </Container>
   );
 };

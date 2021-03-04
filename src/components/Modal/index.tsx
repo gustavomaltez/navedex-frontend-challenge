@@ -7,6 +7,7 @@ interface ModalProps {
   title: string;
   text: string;
   onConfirmAction?: () => void | Promise<void>;
+  onCloseAction?: () => void | Promise<void>;
   okButtonLabel?: string;
   cancelButtonLabel?: string;
 }
@@ -19,15 +20,25 @@ const Modal: React.FC<Props> = ({
     title,
     text,
     onConfirmAction,
+    onCloseAction,
     okButtonLabel = 'Ok',
     cancelButtonLabel = 'Cancelar',
   },
 }) => {
   const { closeModal } = useModal();
+
+  function handleCloseModal() {
+    if (onCloseAction) {
+      onCloseAction();
+    }
+
+    closeModal();
+  }
+
   return (
     <Container>
       <main>
-        {!onConfirmAction && <FiX onClick={closeModal} />}
+        {!onConfirmAction && <FiX onClick={handleCloseModal} />}
         <h1>{title}</h1>
         <p>{text}</p>
 

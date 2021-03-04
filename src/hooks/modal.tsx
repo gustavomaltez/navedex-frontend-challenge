@@ -5,6 +5,7 @@ interface ModalProps {
   title: string;
   text: string;
   onConfirmAction?: () => void | Promise<void>;
+  onCloseAction?: () => void | Promise<void>;
   okButtonLabel?: string;
   cancelButtonLabel?: string;
 }
@@ -31,6 +32,7 @@ const ModalProvider: React.FC = ({ children }) => {
     onConfirmAction,
     okButtonLabel,
     cancelButtonLabel,
+    onCloseAction,
   }: ModalProps): void {
     closeModal();
     setModalData({
@@ -39,14 +41,15 @@ const ModalProvider: React.FC = ({ children }) => {
       onConfirmAction,
       okButtonLabel,
       cancelButtonLabel,
+      onCloseAction,
     });
     setIsModalOpen(true);
   }
 
   return (
     <ModalContext.Provider value={{ openModal, closeModal }}>
-      {isModalOpen && <Modal data={modalData} />}
       {children}
+      {isModalOpen && <Modal data={modalData} />}
     </ModalContext.Provider>
   );
 };
