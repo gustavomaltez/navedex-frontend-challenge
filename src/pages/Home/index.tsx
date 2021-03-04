@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
 import Naver from '../../components/Naver';
 import api from '../../services/api';
@@ -18,6 +19,8 @@ interface NaverData {
 const Home: React.FC = () => {
   const [navers, setNavers] = useState<NaverData[]>([] as NaverData[]);
 
+  const history = useHistory();
+
   useEffect(() => {
     async function getNaversData() {
       try {
@@ -30,13 +33,20 @@ const Home: React.FC = () => {
 
     getNaversData();
   }, []);
+
+  function handleAddNaver() {
+    history.push('/add-naver');
+  }
+
   return (
     <Container>
       <Header />
 
       <section>
         <h1>Navers</h1>
-        <button type="button">Adicionar Naver</button>
+        <button type="button" onClick={handleAddNaver}>
+          Adicionar Naver
+        </button>
       </section>
       <div>
         {navers.map(naver => (

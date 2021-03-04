@@ -32,7 +32,7 @@ const EditNaver: React.FC = () => {
       <Header />
       <main>
         <NaverInfos
-          label="Adicionar Naver"
+          label="Editar Naver"
           id={params.id}
           onSubmit={handleSubmit}
         />
