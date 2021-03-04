@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 import { useModal } from './modal';
 import convertDate from '../utils/convertDateWithTimeZoneToDate';
+import formatDateToPtBrDate from '../utils/formatDateToPtBrDate';
 
 export interface NaverInfosProps {
   id: string;
@@ -32,9 +33,23 @@ const NaverProvider: React.FC = ({ children }) => {
   const history = useHistory();
 
   const addNaver = useCallback(
-    async (data: Omit<NaverInfosProps, 'id' | 'user_id'>) => {
+    async ({
+      admission_date,
+      birthdate,
+      job_role,
+      name,
+      project,
+      url,
+    }: Omit<NaverInfosProps, 'id' | 'user_id'>) => {
       try {
-        const response = await api.post('/navers/', data);
+        const response = await api.post('/navers/', {
+          admission_date: formatDateToPtBrDate(admission_date),
+          birthdate: formatDateToPtBrDate(birthdate),
+          job_role,
+          name,
+          project,
+          url,
+        });
         const newNaver = response.data;
         openModal({
           title: 'Naver criado',
@@ -114,8 +129,8 @@ const NaverProvider: React.FC = ({ children }) => {
     }: Omit<NaverInfosProps, 'user_id'>) => {
       try {
         await api.put(`/navers/${id}`, {
-          admission_date,
-          birthdate,
+          admission_date: formatDateToPtBrDate(admission_date),
+          birthdate: formatDateToPtBrDate(birthdate),
           job_role,
           name,
           project,
