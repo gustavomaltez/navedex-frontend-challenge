@@ -46,11 +46,10 @@ const NaverProvider: React.FC = ({ children }) => {
 
         setNaversList(oldState => [...oldState, newNaver]);
       } catch (error) {
-        console.log(error.response.data);
         alert('Erro ao atualizar naver!');
       }
     },
-    [],
+    [history, openModal],
   );
 
   const getNaverDetails = useCallback(
@@ -77,28 +76,31 @@ const NaverProvider: React.FC = ({ children }) => {
     [],
   );
 
-  const deleteNaver = useCallback(async (id: string) => {
-    async function confirmDeleteNaver() {
-      try {
-        await api.delete(`/navers/${id}`);
-        openModal({
-          title: 'Naver excluído',
-          text: 'Naver excluído com sucesso!',
-        });
+  const deleteNaver = useCallback(
+    async (id: string) => {
+      async function confirmDeleteNaver() {
+        try {
+          await api.delete(`/navers/${id}`);
+          openModal({
+            title: 'Naver excluído',
+            text: 'Naver excluído com sucesso!',
+          });
 
-        setNaversList(oldState => oldState.filter(naver => naver.id !== id));
-      } catch (error) {
-        alert('Erro ao deletar Naver!');
+          setNaversList(oldState => oldState.filter(naver => naver.id !== id));
+        } catch (error) {
+          alert('Erro ao deletar Naver!');
+        }
       }
-    }
 
-    openModal({
-      title: 'Excluir Naver',
-      text: 'Tem certeza que deseja excluir este Naver?',
-      okButtonLabel: 'Excluir',
-      onConfirmAction: confirmDeleteNaver,
-    });
-  }, []);
+      openModal({
+        title: 'Excluir Naver',
+        text: 'Tem certeza que deseja excluir este Naver?',
+        okButtonLabel: 'Excluir',
+        onConfirmAction: confirmDeleteNaver,
+      });
+    },
+    [openModal],
+  );
 
   const editNaver = useCallback(
     async ({
@@ -130,7 +132,7 @@ const NaverProvider: React.FC = ({ children }) => {
         alert('Erro ao atualizar naver!');
       }
     },
-    [],
+    [history, openModal],
   );
 
   const updateNaverList = useCallback(async () => {
@@ -138,7 +140,6 @@ const NaverProvider: React.FC = ({ children }) => {
       const response = await api.get('/navers');
       setNaversList(response.data);
     } catch (error) {
-      console.log(error.response.data);
       alert('Erro ao buscar navers');
     }
   }, []);

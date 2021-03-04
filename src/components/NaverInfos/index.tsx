@@ -31,11 +31,11 @@ const NaverInfos: React.FC<Props> = ({ label, onSubmit, id }) => {
       const naverData = await getNaverDetails(id);
       setInitialData(naverData);
     }
-  }, []);
+  }, [id, getNaverDetails]);
 
   useEffect(() => {
     handleHasId();
-  }, []);
+  }, [handleHasId]);
   return (
     <Container>
       <section>

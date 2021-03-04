@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from 'react';
-import { SubmitHandler, FormHandles } from '@unform/core';
+import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { useHistory } from 'react-router-dom';
 import Input from '../../components/Input';

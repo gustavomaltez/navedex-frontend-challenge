@@ -14,10 +14,13 @@ const EditNaver: React.FC = () => {
 
   const { editNaver } = useNaver();
 
-  const handleSubmit = useCallback((formData: NaverInfosProps): void => {
-    const naverData = { ...formData, id: params.id };
-    editNaver(naverData);
-  }, []);
+  const handleSubmit = useCallback(
+    (formData: NaverInfosProps): void => {
+      const naverData = { ...formData, id: params.id };
+      editNaver(naverData);
+    },
+    [editNaver, params],
+  );
 
   return (
     <Container>
