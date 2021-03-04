@@ -8,6 +8,7 @@ export const Container = styled.div`
 
   img {
     width: 100%;
+    aspect-ratio: 1;
   }
 
   strong {

@@ -1,0 +1,44 @@
+import styled from 'styled-components';
+
+export const Container = styled.div`
+  width: 50vw;
+  margin: 3rem auto;
+
+  section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1rem 0;
+
+    svg {
+      margin: 0 0.5rem 0 -0.5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+  form {
+    position: relative;
+
+    > div {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1rem;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      margin: 2rem 0;
+      background: #212121;
+      color: #ffffff;
+      width: 30%;
+      padding: 0.7rem;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+  }
+`;

@@ -6,10 +6,6 @@ export const Container = styled.div`
   flex-direction: column;
   color: #212121;
 
-  & + div {
-    margin-top: 1rem;
-  }
-
   label {
     font-weight: bold;
     margin-bottom: 0.3rem;
