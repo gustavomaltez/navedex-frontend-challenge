@@ -49,6 +49,8 @@ const AuthProvider: React.FC = ({ children }) => {
     localStorage.setItem('@NaveDex:token', token);
     localStorage.setItem('@NaveDex:user', JSON.stringify(user));
 
+    api.defaults.headers.authorization = `Bearer ${token}`;
+
     setData({ token, user });
   }, []);
 

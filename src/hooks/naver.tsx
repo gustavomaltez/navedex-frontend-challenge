@@ -45,6 +45,7 @@ const NaverProvider: React.FC = ({ children }) => {
 
         setNaversList(oldState => [...oldState, newNaver]);
       } catch (error) {
+        console.log(error.response.data);
         alert('Erro ao atualizar naver!');
       }
     },
@@ -112,6 +113,7 @@ const NaverProvider: React.FC = ({ children }) => {
       const response = await api.get('/navers');
       setNaversList(response.data);
     } catch (error) {
+      console.log(error.response.data);
       alert('Erro ao buscar navers');
     }
   }, []);
