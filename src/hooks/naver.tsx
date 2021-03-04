@@ -2,10 +2,10 @@ import { createContext, useCallback, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 import { useModal } from './modal';
+import convertDate from '../utils/convertDateWithTimeZoneToDate';
 
 export interface NaverInfosProps {
   id: string;
-  user_id: string;
   job_role: string;
   admission_date: string;
   birthdate: string;
@@ -17,6 +17,7 @@ export interface NaverInfosProps {
 interface NaverContextData {
   addNaver: (data: Omit<NaverInfosProps, 'id' | 'user_id'>) => Promise<void>;
   deleteNaver: (id: string) => Promise<void>;
+  getNaverDetails: (id: string) => Promise<NaverInfosProps>;
   editNaver: (data: Omit<NaverInfosProps, 'user_id'>) => Promise<void>;
   updateNaverList: () => Promise<void>;
   naversList: NaverInfosProps[];
@@ -47,6 +48,30 @@ const NaverProvider: React.FC = ({ children }) => {
       } catch (error) {
         console.log(error.response.data);
         alert('Erro ao atualizar naver!');
+      }
+    },
+    [],
+  );
+
+  const getNaverDetails = useCallback(
+    async (id: string): Promise<NaverInfosProps> => {
+      try {
+        const response = await api.get<NaverInfosProps>(`/navers/${id}`);
+
+        const naverData = {
+          id: response.data.id,
+          job_role: response.data.job_role,
+          admission_date: convertDate(response.data.admission_date),
+          birthdate: convertDate(response.data.birthdate),
+          project: response.data.project,
+          name: response.data.name,
+          url: response.data.url,
+        };
+
+        return naverData;
+      } catch (error) {
+        alert('Erro');
+        return {} as NaverInfosProps;
       }
     },
     [],
@@ -120,7 +145,14 @@ const NaverProvider: React.FC = ({ children }) => {
 
   return (
     <NaverContext.Provider
-      value={{ addNaver, deleteNaver, editNaver, updateNaverList, naversList }}
+      value={{
+        addNaver,
+        deleteNaver,
+        editNaver,
+        updateNaverList,
+        naversList,
+        getNaverDetails,
+      }}
     >
       {children}
     </NaverContext.Provider>
