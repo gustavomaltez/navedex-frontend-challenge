@@ -23,7 +23,6 @@ const Login: React.FC = () => {
       try {
         await signIn({ email: data.email, password: data.password });
         history.push('/home');
-        alert('Sucesso!');
       } catch (error) {
         alert('Erro ao autenticar!');
       }
