@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
 
   section {
@@ -23,6 +25,25 @@ export const Container = styled.main`
       padding: 0.7rem 3rem;
       cursor: pointer;
       font-size: 1.1rem;
+    }
+  }
+
+  > div {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
     }
   }
 `;
