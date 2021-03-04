@@ -7,14 +7,21 @@ export const Container = styled.header`
   width: 100%;
   padding: 2rem 3rem;
 
-  img {
-    width: 10%;
-    min-width: 100px;
+  button:first-child {
+    cursor: pointer;
+    width: 20vw;
+    max-width: 200px;
+    background: transparent;
   }
 
-  button {
+  img {
+    width: 100%;
+  }
+
+  button + button {
     font-weight: 600;
     background: transparent;
     font-size: 1rem;
+    cursor: pointer;
   }
 `;
