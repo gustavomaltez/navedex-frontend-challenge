@@ -1,21 +1,29 @@
 import React, { createContext, useContext, useState } from 'react';
+import Modal from '../components/Modal';
 
 interface ModalProps {
   title: string;
   text: string;
-  onConfirmAction?: () => void;
+  onConfirmAction?: () => void | Promise<void>;
   okButtonLabel?: string;
   cancelButtonLabel?: string;
 }
 
 interface ModalContextData {
   openModal: (data: ModalProps) => void;
+  closeModal: () => void;
 }
 
 const ModalContext = createContext({} as ModalContextData);
 
 const ModalProvider: React.FC = ({ children }) => {
   const [modalData, setModalData] = useState({} as ModalProps);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function closeModal() {
+    setIsModalOpen(false);
+    setModalData({} as ModalProps);
+  }
 
   function openModal({
     title,
@@ -24,6 +32,7 @@ const ModalProvider: React.FC = ({ children }) => {
     okButtonLabel,
     cancelButtonLabel,
   }: ModalProps): void {
+    closeModal();
     setModalData({
       title,
       text,
@@ -31,10 +40,12 @@ const ModalProvider: React.FC = ({ children }) => {
       okButtonLabel,
       cancelButtonLabel,
     });
+    setIsModalOpen(true);
   }
 
   return (
-    <ModalContext.Provider value={{ openModal }}>
+    <ModalContext.Provider value={{ openModal, closeModal }}>
+      {isModalOpen && <Modal data={modalData} />}
       {children}
     </ModalContext.Provider>
   );
