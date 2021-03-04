@@ -26,6 +26,17 @@ export const Container = styled.main`
       cursor: pointer;
       font-size: 1.1rem;
     }
+
+    @media (max-width: 320px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 0.7rem 2rem;
+      }
+    }
   }
 
   > div {
