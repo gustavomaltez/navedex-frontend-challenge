@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import Input from '../Input';
 import { Container } from './styles';
+import convertDate from '../../utils/convertDateWithTimeZoneToDate';
 
 export interface NaverInfosProps {
   job_role: string;
@@ -37,8 +38,27 @@ const NaverInfos: React.FC<Props> = ({ label, onSubmit, id }) => {
   useEffect(() => {
     async function getNaverData() {
       try {
-        const response = await api.get(`/navers/${id}`);
-        setInitialData(response.data);
+        const response = await api.get<NaverInfosProps>(`/navers/${id}`);
+
+        const {
+          admission_date,
+          birthdate,
+          job_role,
+          name,
+          project,
+          url,
+        } = response.data;
+
+        const naverData = {
+          job_role,
+          admission_date: convertDate(admission_date),
+          birthdate: convertDate(birthdate),
+          project,
+          name,
+          url,
+        };
+
+        setInitialData(naverData);
       } catch (error) {
         alert('Erro ao obter dados do Naver!');
       }
