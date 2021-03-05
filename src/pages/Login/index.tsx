@@ -62,7 +62,9 @@ const Login: React.FC = () => {
         <img src={logoImg} alt="Logo" />
         <Input name="email" label="E-mail" type="email" />
         <Input name="password" label="Senha" type="password" />
-        <button type="submit">Entrar</button>
+        <button type="submit">
+          <p>Entrar</p>
+        </button>
       </Form>
     </Container>
   );

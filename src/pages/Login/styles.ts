@@ -44,7 +44,17 @@ export const Container = styled.div`
       width: 100%;
       padding: 0.7rem;
       cursor: pointer;
-      font-size: 1.1rem;
+
+      p {
+        font-size: 1.1rem;
+        transition: transform 200ms;
+      }
+
+      &:hover {
+        p {
+          transform: scaleX(1.1);
+        }
+      }
     }
   }
 `;
