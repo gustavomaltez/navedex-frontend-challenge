@@ -17,18 +17,18 @@
 <details open="true">
   <summary>Sumário</summary>
   <ol>
-    <li><a href="#sobre-o-projeto">Sobre o projeto</a></li>
-    <li><a href="#diferenciais">Diferenciais</a></li>
-    <li><a href="#pré-visualização">Pré-visualização</a></li>
-    <li><a href="#bibliotecas utilizadas">Bibliotecas utilizadas</a></li>
-    <li><a href="#acesse-a-aplicação">Acesse a aplicação</a></li>
-    <li><a href="#tecnologias-utilizadas">Tecnologias utilizadas</a></li>
-    <li><a href="#padronização-de-código">Padronização de código</a></li>
-    <li><a href="#instalação">Instalação</a></li>
-    <li><a href="#tempo-de-desenvolvimento">Tempo de desenvolvimento</a></li>
-    <li><a href="#dificuldades-e-aprendizados">Dificuldades e aprendizados</a></li>
-    <li><a href="#contato">Contato</a></li>
-    <li><a href="#licença">Licença</a></li>
+    <li><a href="#-sobre-o-projeto">Sobre o projeto</a></li>
+    <li><a href="#-diferenciais">Diferenciais</a></li>
+    <li><a href="#-pré-visualização">Pré-visualização</a></li>
+    <li><a href="#-bibliotecas utilizadas">Bibliotecas utilizadas</a></li>
+    <li><a href="#-acesse-a-aplicação">Acesse a aplicação</a></li>
+    <li><a href="#-tecnologias-utilizadas">Tecnologias utilizadas</a></li>
+    <li><a href="#-padronização-de-código">Padronização de código</a></li>
+    <li><a href="#-instalação">Instalação</a></li>
+    <li><a href="#-tempo-de-desenvolvimento">Tempo de desenvolvimento</a></li>
+    <li><a href="#-dificuldades-e-aprendizados">Dificuldades e aprendizados</a></li>
+    <li><a href="#-contato">Contato</a></li>
+    <li><a href="#-licença">Licença</a></li>
   </ol>
 </details>
 
@@ -129,6 +129,6 @@ Em primeiro lugar, o desenvolvimento desse projeto foi de grande aprendizado par
 Para quaisquer dúvidas quanto ao projeto, sinta-se a vontade para entrar em contato comigo via e-mail: gustavomaltez.dev@gmail.com ou [linkedin](https://www.linkedin.com/in/gustavommaltez/). Se você também está participando desse desafio e está com alguma dificuldade, será um prazer te ajudar, utilize os meios de contato anteriores ou me chame no discord (Gustavo Maltez#8603).
 
 ## 📄 Licença
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+Esse software está sob a licença MIT. Veja o arquivo `LICENSE` para mais informações.
 
 
