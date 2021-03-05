@@ -6,6 +6,7 @@ import Input from '../../components/Input';
 import logoImg from '../../assets/images/logo.svg';
 import { Container } from './styles';
 import { useAuth } from '../../hooks/auth';
+import { useToast } from '../../hooks/toast';
 
 interface FormData {
   email: string;
@@ -17,17 +18,42 @@ const Login: React.FC = () => {
   const { signIn } = useAuth();
 
   const history = useHistory();
+  const { addToast } = useToast();
 
   const handleSubmit = useCallback(
     async (data: FormData): Promise<void> => {
       try {
         await signIn({ email: data.email, password: data.password });
         history.push('/home');
+        addToast({
+          type: 'success',
+          title: 'Autenticado com sucesso!',
+          description:
+            'Você foi autenticado com sucesso. Sua sessão está salva no navegador.',
+        });
       } catch (error) {
-        alert('Erro ao autenticar!');
+        if (error.response) {
+          const { status } = error.response;
+
+          if (status >= 400 && status < 500) {
+            addToast({
+              type: 'error',
+              title: 'Erro na autenticação',
+              description:
+                'Ocorreu um erro ao fazer login, cheque as credenciais.',
+            });
+          } else {
+            addToast({
+              type: 'error',
+              title: 'Erro na autenticação',
+              description:
+                'Falha ao se conectar com o servidor. Por favor, tente novamente',
+            });
+          }
+        }
       }
     },
-    [signIn, history],
+    [signIn, history, addToast],
   );
 
   return (

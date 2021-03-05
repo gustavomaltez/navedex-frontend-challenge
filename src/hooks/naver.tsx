@@ -4,6 +4,7 @@ import api from '../services/api';
 import { useModal } from './modal';
 import convertDate from '../utils/convertDateWithTimeZoneToDate';
 import formatDateToPtBrDate from '../utils/formatDateToPtBrDate';
+import { useToast } from './toast';
 
 export interface NaverInfosProps {
   id: string;
@@ -31,6 +32,7 @@ const NaverProvider: React.FC = ({ children }) => {
 
   const { openModal } = useModal();
   const history = useHistory();
+  const { addToast } = useToast();
 
   const addNaver = useCallback(
     async ({
@@ -61,10 +63,15 @@ const NaverProvider: React.FC = ({ children }) => {
 
         setNaversList(oldState => [...oldState, newNaver]);
       } catch (error) {
-        alert('Erro ao atualizar naver!');
+        addToast({
+          type: 'error',
+          title: 'Erro ao atualizar naver',
+          description:
+            'Ocorreu um erro ao tentar atualizar esse naver, tente novamente.',
+        });
       }
     },
-    [history, openModal],
+    [history, openModal, addToast],
   );
 
   const getNaverDetails = useCallback(
@@ -84,11 +91,16 @@ const NaverProvider: React.FC = ({ children }) => {
 
         return naverData;
       } catch (error) {
-        alert('Erro');
+        addToast({
+          type: 'error',
+          title: 'Erro ao buscar naver',
+          description:
+            'Ocorreu um erro ao tentar obter as informações desse naver.',
+        });
         return {} as NaverInfosProps;
       }
     },
-    [],
+    [addToast],
   );
 
   const deleteNaver = useCallback(
@@ -103,7 +115,12 @@ const NaverProvider: React.FC = ({ children }) => {
 
           setNaversList(oldState => oldState.filter(naver => naver.id !== id));
         } catch (error) {
-          alert('Erro ao deletar Naver!');
+          addToast({
+            type: 'error',
+            title: 'Erro ao deletar naver',
+            description:
+              'Ocorreu um erro ao tentar deletar esse naver, tente novamente.',
+          });
         }
       }
 
@@ -114,7 +131,7 @@ const NaverProvider: React.FC = ({ children }) => {
         onConfirmAction: confirmDeleteNaver,
       });
     },
-    [openModal],
+    [openModal, addToast],
   );
 
   const editNaver = useCallback(
@@ -144,10 +161,15 @@ const NaverProvider: React.FC = ({ children }) => {
           },
         });
       } catch (error) {
-        alert('Erro ao atualizar naver!');
+        addToast({
+          type: 'error',
+          title: 'Erro ao atualizar naver',
+          description:
+            'Ocorreu um erro ao tentar atualizar as informações desse naver.',
+        });
       }
     },
-    [history, openModal],
+    [history, openModal, addToast],
   );
 
   const updateNaverList = useCallback(async () => {
@@ -155,9 +177,14 @@ const NaverProvider: React.FC = ({ children }) => {
       const response = await api.get('/navers');
       setNaversList(response.data);
     } catch (error) {
-      alert('Erro ao buscar navers');
+      addToast({
+        type: 'error',
+        title: 'Erro ao obter navers',
+        description:
+          'Ocorreu um erro ao tentar obter a lista de navers. Recarregue a página.',
+      });
     }
-  }, []);
+  }, [addToast]);
 
   return (
     <NaverContext.Provider

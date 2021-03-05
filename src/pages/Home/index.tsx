@@ -38,7 +38,7 @@ const Home: React.FC = () => {
 
       <div>
         {transitions.map(({ item, key, props }) => (
-          <Naver data={item} key={item.id} style={props} />
+          <Naver data={item} key={key} style={props} />
         ))}
       </div>
     </Container>
