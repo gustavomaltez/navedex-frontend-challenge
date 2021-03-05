@@ -1,6 +1,49 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-export const Container = styled.div`
+const inAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const outAnimation = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to{
+    opacity: 0;
+    transform: translateY(50px);
+  }
+`;
+
+const bgShow = keyframes`
+  from {
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+`;
+
+const bgHide = keyframes`
+  from {
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+`;
+
+interface Props {
+  willClose: boolean;
+}
+export const Container = styled.div<Props>`
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -11,6 +54,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: ${({ willClose }) => (willClose ? bgHide : bgShow)} 500ms;
 
   main {
     position: relative;
@@ -21,6 +65,8 @@ export const Container = styled.div`
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
     text-align: center;
     position: relative;
+    animation: ${({ willClose }) => (willClose ? outAnimation : inAnimation)}
+      200ms;
 
     h1 {
       font-size: 1.5rem;

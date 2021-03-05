@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { useModal } from '../../hooks/modal';
 import { Container } from './styles';
@@ -25,18 +25,22 @@ const Modal: React.FC<Props> = ({
     cancelButtonLabel = 'Cancelar',
   },
 }) => {
+  const [willClose, setWillClose] = useState(false);
   const { closeModal } = useModal();
 
   function handleCloseModal() {
-    if (onCloseAction) {
-      onCloseAction();
-    }
+    setWillClose(true);
+    setTimeout(() => {
+      if (onCloseAction) {
+        onCloseAction();
+      }
 
-    closeModal();
+      closeModal();
+    }, 150);
   }
 
   return (
-    <Container>
+    <Container willClose={willClose}>
       <main>
         {!onConfirmAction && <FiX onClick={handleCloseModal} />}
         <h1>{title}</h1>
@@ -44,7 +48,7 @@ const Modal: React.FC<Props> = ({
 
         {onConfirmAction && (
           <div>
-            <button type="button" onClick={closeModal}>
+            <button type="button" onClick={handleCloseModal}>
               {cancelButtonLabel}
             </button>
             <button type="button" onClick={onConfirmAction}>
