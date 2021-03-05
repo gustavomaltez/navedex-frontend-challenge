@@ -43,6 +43,7 @@ export const Container = styled.main`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2rem;
+    width: 100%;
 
     @media (max-width: 900px) {
       grid-template-columns: repeat(3, 1fr);

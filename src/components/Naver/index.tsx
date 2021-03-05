@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { NaverInfosProps, useNaver } from '../../hooks/naver';
 import NaverDetailsModal from './NaverDetailsModal';
 import { Container } from './styles';
+import defaultAvatarImage from '../../assets/images/nave.png';
+import CardLoader from './CardLoader';
 
 interface Props {
   data: NaverInfosProps;
@@ -11,9 +13,11 @@ interface Props {
 
 const Naver: React.FC<Props> = ({ data }) => {
   const [showDetails, setShowDetails] = useState(false);
+  const [url, setUrl] = useState(data.url);
+  const [isLoading, setIsloading] = useState(true);
 
   const history = useHistory();
-  const { id, url, job_role, name } = data;
+  const { id, job_role, name } = data;
   const { deleteNaver } = useNaver();
 
   function handleCloseModal() {
@@ -36,17 +40,31 @@ const Naver: React.FC<Props> = ({ data }) => {
       {showDetails && (
         <NaverDetailsModal data={data} onClose={handleCloseModal} />
       )}
-      <Container>
-        <button type="button" onClick={handleOpenModal}>
-          <img src={url} alt={name} />
-        </button>
-        <strong>{name}</strong>
-        <p>{job_role}</p>
-        <div>
-          <FaTrash onClick={handleDeleteNaver} />
-          <FaPen onClick={handleEditNaver} />
-        </div>
-      </Container>
+
+      {isLoading ? (
+        <CardLoader />
+      ) : (
+        <Container>
+          <button type="button" onClick={handleOpenModal}>
+            <img
+              src={url}
+              alt={name}
+              onLoad={() => {
+                setIsloading(false);
+              }}
+              onError={() => {
+                setUrl(defaultAvatarImage);
+              }}
+            />
+          </button>
+          <strong>{name}</strong>
+          <p>{job_role}</p>
+          <div>
+            <FaTrash onClick={handleDeleteNaver} />
+            <FaPen onClick={handleEditNaver} />
+          </div>
+        </Container>
+      )}
     </>
   );
 };
