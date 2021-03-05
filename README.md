@@ -47,6 +47,7 @@ Esse projeto foi desenvolvido como um desafio para a vaga de desenvolvedor front
 <div align="center">
     <img src="/docs/preview.gif" width="80%"/>
 </div>
+Clique [aqui](https://user-images.githubusercontent.com/57905553/110168924-a8005700-7dd6-11eb-9dd1-eec350a6ac96.mp4) para ver a continuação desse gif, onde mostro as funcionalidades básicas da aplicação.
 
 ## 🌐 Acesse a aplicação
 
