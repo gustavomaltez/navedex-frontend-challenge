@@ -151,7 +151,7 @@ const NaverProvider: React.FC = ({ children }) => {
       url,
     }: Omit<NaverInfosProps, 'user_id'>) => {
       try {
-        await api.put(`/navers/${id}`, {
+        const response = await api.put(`/navers/${id}`, {
           admission_date: formatDateToPtBrDate(admission_date),
           birthdate: formatDateToPtBrDate(birthdate),
           job_role,
@@ -159,6 +159,17 @@ const NaverProvider: React.FC = ({ children }) => {
           project,
           url,
         });
+
+        const editedNaver = response.data;
+
+        const updatedNaversList = naversList.map(naver => {
+          if (naver.id === id) {
+            return editedNaver;
+          }
+          return naver;
+        });
+
+        setNaversList(updatedNaversList);
         openModal({
           title: 'Naver atualizado',
           text: 'Naver atualizado com sucesso',
