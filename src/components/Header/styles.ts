@@ -1,4 +1,16 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const shake = keyframes`
+  0% {
+        transform: rotateY( 10deg) rotateZ( 1deg);
+  }
+  50% {
+      transform: rotateY( -10deg) rotateZ( -1deg);
+  }
+  100% {
+      transform: rotateY( 10deg) rotateZ( 1deg);
+  }
+`;
 
 export const Container = styled.header`
   display: flex;
@@ -16,6 +28,10 @@ export const Container = styled.header`
 
   img {
     width: 100%;
+
+    &:hover {
+      animation: ${shake} 1000ms infinite;
+    }
   }
 
   button + button {
@@ -23,5 +39,10 @@ export const Container = styled.header`
     background: transparent;
     font-size: 1rem;
     cursor: pointer;
+    transition: transform 200ms;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 `;

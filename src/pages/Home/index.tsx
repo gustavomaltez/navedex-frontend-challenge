@@ -32,7 +32,7 @@ const Home: React.FC = () => {
       <section>
         <h1>Navers</h1>
         <button type="button" onClick={handleAddNaver}>
-          Adicionar Naver
+          <p>Adicionar Naver</p>
         </button>
       </section>
 

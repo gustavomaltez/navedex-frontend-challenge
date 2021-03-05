@@ -23,7 +23,16 @@ export const Container = styled.main`
       color: #ffffff;
       padding: 0.7rem 3rem;
       cursor: pointer;
-      font-size: 1.1rem;
+
+      p {
+        font-size: 1.1rem;
+        transition: transform 200ms;
+      }
+      &:hover {
+        p {
+          transform: translateX(0.5rem);
+        }
+      }
     }
 
     @media (max-width: 320px) {

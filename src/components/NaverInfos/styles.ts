@@ -44,7 +44,7 @@ export const Container = styled.div`
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 1rem;
 
-      @media (max-width: 400px) {
+      @media (max-width: 430px) {
         grid-template-columns: 1fr;
       }
     }
