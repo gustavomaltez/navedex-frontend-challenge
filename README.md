@@ -115,7 +115,7 @@ Esse projeto também utiliza o guia de estilos do airbnb.
    ```
 
 ## Tempo de desenvolvimento
-O desenvolvimento desse projeto se iniciou no dia 03/03/2021 e finalizou no dia 05/03/2021, totalizando 3 dias de desenvolvimento. Ao total, desde a configuração inicial do projeto até a sua publicação, levaram-se 27 horas e 23 minutos (dados retirados da extensão de monitoramento de código [https://wakatime.com/](wakatime) ). Os gráficos abaixo mostram de forma mais detalhada como se deu o desenvolvimento desse projeto com o passar dos dias.
+O desenvolvimento desse projeto se iniciou no dia 03/03/2021 e finalizou no dia 05/03/2021, totalizando 3 dias de desenvolvimento. Ao total, desde a configuração inicial do projeto até a sua publicação, levaram-se 27 horas e 23 minutos (dados retirados da extensão de monitoramento de código [wakatime](https://wakatime.com/)). Os gráficos abaixo mostram de forma mais detalhada como se deu o desenvolvimento desse projeto com o passar dos dias.
 
 <div align="center">
     <img src="/docs/development-time.png" width="80%"/>
