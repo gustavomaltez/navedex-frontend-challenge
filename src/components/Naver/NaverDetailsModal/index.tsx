@@ -2,11 +2,12 @@ import React, { useCallback, useState } from 'react';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import { FiX } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
-import { differenceInYears } from 'date-fns';
+import { differenceInMonths } from 'date-fns';
 import { NaverInfosProps, useNaver } from '../../../hooks/naver';
 import { Container } from './styles';
 import defaultAvatarImage from '../../../assets/images/nave.png';
 import ImageLoader from './ImageLoader';
+import getStringTime from '../../../utils/convertMonthsInStringYearsAndMonths';
 
 interface Props {
   data: NaverInfosProps;
@@ -24,8 +25,12 @@ const NaverDetailsModal: React.FC<Props> = ({
 
   const { deleteNaver } = useNaver();
 
-  const age = differenceInYears(new Date(), new Date(birthdate));
-  const timeInCompany = differenceInYears(new Date(), new Date(admission_date));
+  const ageMonths = differenceInMonths(new Date(), new Date(birthdate));
+
+  const timeInCompanyMonths = differenceInMonths(
+    new Date(),
+    new Date(admission_date),
+  );
 
   const handleDeleteNaver = useCallback(() => {
     deleteNaver(id);
@@ -71,16 +76,12 @@ const NaverDetailsModal: React.FC<Props> = ({
 
           <span>
             <strong>Idade</strong>
-            <p>
-              {age} {age === 1 ? 'Ano' : 'Anos'}
-            </p>
+            <p>{getStringTime(ageMonths)}</p>
           </span>
 
           <span>
             <strong>Tempo de empresa</strong>
-            <p>
-              {timeInCompany} {timeInCompany === 1 ? 'Ano' : 'Anos'}
-            </p>
+            <p>{getStringTime(timeInCompanyMonths)}</p>
           </span>
 
           <span>
