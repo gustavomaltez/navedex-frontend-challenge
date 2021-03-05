@@ -1,4 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const upAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 export const Container = styled.div`
   height: 100vh;
@@ -15,6 +26,7 @@ export const Container = styled.div`
     padding: 0 2rem;
     width: 450px;
     max-width: 80vw;
+    animation: ${upAnimation} 1500ms;
 
     div + div {
       margin-top: 2rem;

@@ -2,21 +2,22 @@ import React, { useCallback, useState } from 'react';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
 import { NaverInfosProps, useNaver } from '../../hooks/naver';
-import NaverDetailsModal from './NaverDetailsModal';
 import { Container } from './styles';
 import defaultAvatarImage from '../../assets/images/nave.png';
 import CardLoader from './CardLoader';
+import { useModal } from '../../hooks/modal';
 
 interface Props {
   data: NaverInfosProps;
+  style: object;
 }
 
-const Naver: React.FC<Props> = ({ data }) => {
-  const [showDetails, setShowDetails] = useState(false);
+const Naver: React.FC<Props> = ({ data, style }) => {
   const { id, job_role, url, name } = data;
   const [imageSrc, setImageSrc] = useState(url);
   const [isLoading, setIsloading] = useState(true);
 
+  const { openNaverDetailsModal } = useModal();
   const history = useHistory();
   const { deleteNaver } = useNaver();
 
@@ -32,13 +33,10 @@ const Naver: React.FC<Props> = ({ data }) => {
     setImageSrc(defaultAvatarImage);
   };
 
-  function handleCloseModal() {
-    setShowDetails(false);
+  function handleOpenModal() {
+    openNaverDetailsModal(data);
   }
 
-  function handleOpenModal() {
-    setShowDetails(true);
-  }
   const handleDeleteNaver = useCallback(() => {
     deleteNaver(id);
   }, [id, deleteNaver]);
@@ -49,14 +47,10 @@ const Naver: React.FC<Props> = ({ data }) => {
 
   return (
     <>
-      {showDetails && (
-        <NaverDetailsModal data={data} onClose={handleCloseModal} />
-      )}
-
       {isLoading ? (
         <CardLoader />
       ) : (
-        <Container>
+        <Container style={style}>
           <button type="button" onClick={handleOpenModal}>
             <img src={imageSrc} alt={name} />
           </button>

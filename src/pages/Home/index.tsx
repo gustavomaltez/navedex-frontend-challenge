@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useTransition } from 'react-spring';
 import Header from '../../components/Header';
 import Naver from '../../components/Naver';
 import { useNaver } from '../../hooks/naver';
@@ -18,6 +19,12 @@ const Home: React.FC = () => {
     updateNaverList();
   }, [updateNaverList]);
 
+  const transitions = useTransition(naversList, item => item.id, {
+    from: { transform: 'translate3d(0,-40px,0)' },
+    enter: { transform: 'translate3d(0,0px,0)' },
+    leave: { transform: 'translate3d(0,-40px,0)' },
+  });
+
   return (
     <Container>
       <Header />
@@ -30,8 +37,8 @@ const Home: React.FC = () => {
       </section>
 
       <div>
-        {naversList.map(naver => (
-          <Naver data={naver} key={naver.id} />
+        {transitions.map(({ item, key, props }) => (
+          <Naver data={item} key={item.id} style={props} />
         ))}
       </div>
     </Container>

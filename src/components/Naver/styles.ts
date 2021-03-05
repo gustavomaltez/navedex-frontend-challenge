@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { animated } from 'react-spring';
 
-export const Container = styled.div`
+export const Container = styled(animated.div)`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -25,6 +26,15 @@ export const Container = styled.div`
 
     svg {
       cursor: pointer;
+      transition: transform 200ms;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &:first-child:hover {
+        color: #e83f5b;
+      }
     }
 
     svg + svg {

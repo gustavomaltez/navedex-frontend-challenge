@@ -1,5 +1,24 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
+const show = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const bgShow = keyframes`
+  from {
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+`;
 export const Container = styled.div`
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -11,6 +30,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: ${bgShow} 200ms;
 
   main {
     position: relative;
@@ -20,6 +40,7 @@ export const Container = styled.div`
     background: #fff;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    animation: ${show} 500ms;
 
     @media (max-width: 500px) {
       grid-template-columns: 1fr;
@@ -58,10 +79,18 @@ export const Container = styled.div`
       justify-content: flex-start;
       padding: 2rem 2rem 5rem;
 
-      svg {
+      div > svg {
         cursor: pointer;
-      }
+        transition: transform 200ms;
 
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        &:first-child:hover {
+          color: #e83f5b;
+        }
+      }
       span + span {
         margin-top: 2rem;
       }
@@ -75,6 +104,7 @@ export const Container = styled.div`
       }
 
       > svg {
+        cursor: pointer;
         position: absolute;
         right: 0.8rem;
         top: 0.8rem;
