@@ -110,13 +110,17 @@ Visando o desenvolvimento de uma aplicação escalável, de fácil entendimento 
    ```
 
 <!-- CONTACT -->
+## Tempo de desenvolvimento
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+
+<!-- CONTACT -->
 ## Dificuldades e aprendizados
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
 
 <!-- CONTACT -->
 ## Contato
 
-Para quaisquer dúvidas quanto ao projeto, sinta-se a vontade para entrar em contato comigo via e-mail: gustavomaltez.dev@gmail.com ou [linkecin](https://www.linkedin.com/in/gustavommaltez/). Se você também está participando desse desafio e está com alguma dificuldade, será um prazer te ajudar, utilize os meios de contato anteriores ou me chame no discord (Gustavo Maltez#8603).
+Para quaisquer dúvidas quanto ao projeto, sinta-se a vontade para entrar em contato comigo via e-mail: gustavomaltez.dev@gmail.com ou [linkedin](https://www.linkedin.com/in/gustavommaltez/). Se você também está participando desse desafio e está com alguma dificuldade, será um prazer te ajudar, utilize os meios de contato anteriores ou me chame no discord (Gustavo Maltez#8603).
 
 <!-- LICENSE -->
 ## Licença
