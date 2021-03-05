@@ -19,16 +19,22 @@ const NaverDetailsModal: React.FC<Props> = ({
 }) => {
   const [isLoading, setIsloading] = useState(true);
   const [imageSrc, setImageSrc] = useState(url);
+  const [willClose, setWillClose] = useState(false);
   const history = useHistory();
 
   const { deleteNaver } = useNaver();
 
   const age = differenceInYears(new Date(), new Date(birthdate));
   const timeInCompany = differenceInYears(new Date(), new Date(admission_date));
+
   const handleDeleteNaver = useCallback(() => {
     deleteNaver(id);
   }, [id, deleteNaver]);
 
+  function handleOnClose() {
+    setWillClose(true);
+    setTimeout(onClose, 150);
+  }
   const handleEditNaver = useCallback(() => {
     history.push(`/edit-naver/${id}`);
   }, [history, id]);
@@ -45,13 +51,13 @@ const NaverDetailsModal: React.FC<Props> = ({
     setImageSrc(defaultAvatarImage);
   };
   return (
-    <Container>
+    <Container willClose={willClose}>
       <main>
         <section>
           {isLoading ? <ImageLoader /> : <img src={imageSrc} alt={name} />}
         </section>
         <section>
-          <FiX onClick={onClose} />
+          <FiX onClick={handleOnClose} />
 
           <span>
             <h1>{name}</h1>

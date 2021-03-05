@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
-const show = keyframes`
+const inAnimation = keyframes`
   from {
     opacity: 0;
     transform: translateY(50px);
@@ -8,6 +8,17 @@ const show = keyframes`
   to{
     opacity: 1;
     transform: translateY(0);
+  }
+`;
+
+const outAnimation = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to{
+    opacity: 0;
+    transform: translateY(50px);
   }
 `;
 
@@ -19,7 +30,20 @@ const bgShow = keyframes`
     opacity: 1;
   }
 `;
-export const Container = styled.div`
+
+const bgHide = keyframes`
+  from {
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+`;
+interface Props {
+  willClose: boolean;
+}
+
+export const Container = styled.div<Props>`
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -30,7 +54,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: ${bgShow} 200ms;
+  animation: ${({ willClose }) => (willClose ? bgHide : bgShow)} 500ms;
 
   main {
     position: relative;
@@ -40,7 +64,8 @@ export const Container = styled.div`
     background: #fff;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    animation: ${show} 500ms;
+    animation: ${({ willClose }) => (willClose ? outAnimation : inAnimation)}
+      200ms;
 
     @media (max-width: 500px) {
       grid-template-columns: 1fr;
