@@ -52,4 +52,24 @@ export default createGlobalStyle`
           font-size: 60.5%;
       }
   }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(33,33,33,0.95);
+    border-radius: 0px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover{
+    background: rgba(33,33,33,1);
+  }
+
+  ::-webkit-scrollbar-track{
+    background: #ffffff;
+    border-radius: 0px;
+    box-shadow: inset 7px 10px 12px #f0f0f0;
+  }
 `;
