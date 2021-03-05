@@ -36,8 +36,12 @@ const NaverDetailsModal: React.FC<Props> = ({
     setTimeout(onClose, 150);
   }
   const handleEditNaver = useCallback(() => {
-    history.push(`/edit-naver/${id}`);
-  }, [history, id]);
+    setWillClose(true);
+    setTimeout(() => {
+      onClose();
+      history.push(`/edit-naver/${id}`);
+    }, 150);
+  }, [history, id, onClose]);
 
   const img = new Image();
   img.src = url;
