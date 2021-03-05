@@ -45,7 +45,7 @@ Esse projeto foi desenvolvido como um desafio para a vaga de desenvolvedor front
 
 ## 📺 Pré-visualização
 <div align="center">
-    <img src="https://j.gifs.com/91nL9x.gif" width="80%"/>
+    <img src="/docs/preview.gif" width="80%"/>
 </div>
 
 ## 🌐 Acesse a aplicação
