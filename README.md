@@ -9,7 +9,7 @@
   <p align="center">
     Aplicação web feita para o desafio da nave.rs da vaga de Dev FrontEnd
     <br />
-    <a href="/"><strong>Acessar aplicação »</strong></a>
+    <a href="https://navedex-gustavomaltez.vercel.app/"><strong>Acessar aplicação »</strong></a>
     <br />
 </p>
 
@@ -48,21 +48,9 @@ Esse projeto foi desenvolvido como um desafio para a vaga de desenvolvedor front
     <img src="/docs/preview.gif" width="80%"/>
 </div>
 
-## 📚 Bibliotecas utilizadas
-
-Para o desenvolvimento desse projeto foram utilizadas algumas bibliotecas para permitir uma maior personalização.
-* [axios](https://www.npmjs.com/package/axios) - Para requisições http.
-* [date-fns](https://www.npmjs.com/package/date-fns) - Para conversão de datas e cálculo de tempo.
-* [react-content-loader](https://www.npmjs.com/package/react-content-loader) - Para as animações de pré-carregamento dos cards.
-* [react-icons](https://www.npmjs.com/package/react-icons) - Para os icones utilizados.
-* [react-router-dom](https://www.npmjs.com/package/react-router-dom) - Para criação de páginas e rotas autenticadas.
-* [react-spring](https://www.npmjs.com/package/react-spring) - Para animações de componentes em sequência.
-* [styled-components](https://styled-components.com/) - Para estilizar de forma escopada os componentes.
-* [uuid](https://www.npmjs.com/package/uuid) - Para gerar identificadores únicos para componentes.
-
 ## 🌐 Acesse a aplicação
 
-Uma versão da última build desse projeto está online e se encontra hospedada na Vercel, você pode acessa-la [clicando aqui](https://github.com/gustavomaltez/). Para fazer login você pode utilizar tanto as minhas credenciais, quanto as credenciais de exemplo fornecidas pela nave.
+Uma versão da última build desse projeto está online e se encontra hospedada na Vercel, você pode acessa-la [clicando aqui](https://navedex-gustavomaltez.vercel.app/). Para fazer login você pode utilizar tanto as minhas credenciais, quanto as credenciais de exemplo fornecidas pela nave.
 
 <strong>Credenciais de exemplo<strong/>
 ```sh
@@ -91,6 +79,17 @@ Para manter um código limpo, bem estruturado, de fácil manutenção e que se a
 
 Esse projeto também utiliza o guia de estilos do airbnb.
 * [airbnb-eslint](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)
+
+## 📚 Bibliotecas utilizadas
+Para o desenvolvimento desse projeto foram utilizadas algumas bibliotecas para permitir uma maior personalização.
+* [axios](https://www.npmjs.com/package/axios) - Para requisições http.
+* [date-fns](https://www.npmjs.com/package/date-fns) - Para conversão de datas e cálculo de tempo.
+* [react-content-loader](https://www.npmjs.com/package/react-content-loader) - Para as animações de pré-carregamento dos cards.
+* [react-icons](https://www.npmjs.com/package/react-icons) - Para os icones utilizados.
+* [react-router-dom](https://www.npmjs.com/package/react-router-dom) - Para criação de páginas e rotas autenticadas.
+* [react-spring](https://www.npmjs.com/package/react-spring) - Para animações de componentes em sequência.
+* [styled-components](https://styled-components.com/) - Para estilizar de forma escopada os componentes.
+* [uuid](https://www.npmjs.com/package/uuid) - Para gerar identificadores únicos para componentes.
 
 ## 🔽 Instalação
 1. Clone o repositório
