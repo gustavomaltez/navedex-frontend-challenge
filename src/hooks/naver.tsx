@@ -19,6 +19,7 @@ export interface NaverInfosProps {
 interface NaverContextData {
   addNaver: (data: Omit<NaverInfosProps, 'id' | 'user_id'>) => Promise<void>;
   deleteNaver: (id: string) => Promise<void>;
+  confirmDeleteNaver: (id: string) => Promise<void>;
   getNaverDetails: (id: string) => Promise<NaverInfosProps>;
   editNaver: (data: Omit<NaverInfosProps, 'user_id'>) => Promise<void>;
   updateNaverList: () => Promise<void>;
@@ -65,9 +66,9 @@ const NaverProvider: React.FC = ({ children }) => {
       } catch (error) {
         addToast({
           type: 'error',
-          title: 'Erro ao atualizar naver',
+          title: 'Erro ao adicionar naver',
           description:
-            'Ocorreu um erro ao tentar atualizar esse naver, tente novamente.',
+            'Ocorreu um erro ao tentar adicionar esse naver, tente novamente. Verifique os campos.',
         });
       }
     },
@@ -95,7 +96,7 @@ const NaverProvider: React.FC = ({ children }) => {
           type: 'error',
           title: 'Erro ao buscar naver',
           description:
-            'Ocorreu um erro ao tentar obter as informações desse naver.',
+            'Ocorreu um erro ao tentar obter as informações desse naver. Verifique os campos.',
         });
         return {} as NaverInfosProps;
       }
@@ -103,35 +104,40 @@ const NaverProvider: React.FC = ({ children }) => {
     [addToast],
   );
 
+  const confirmDeleteNaver = useCallback(
+    async (id: string): Promise<void> => {
+      try {
+        await api.delete(`/navers/${id}`);
+        openModal({
+          title: 'Naver excluído',
+          text: 'Naver excluído com sucesso!',
+        });
+
+        setNaversList(oldState => oldState.filter(naver => naver.id !== id));
+      } catch (error) {
+        addToast({
+          type: 'error',
+          title: 'Erro ao deletar naver',
+          description:
+            'Ocorreu um erro ao tentar deletar esse naver, tente novamente.',
+        });
+      }
+    },
+    [addToast, openModal],
+  );
+
   const deleteNaver = useCallback(
     async (id: string) => {
-      async function confirmDeleteNaver() {
-        try {
-          await api.delete(`/navers/${id}`);
-          openModal({
-            title: 'Naver excluído',
-            text: 'Naver excluído com sucesso!',
-          });
-
-          setNaversList(oldState => oldState.filter(naver => naver.id !== id));
-        } catch (error) {
-          addToast({
-            type: 'error',
-            title: 'Erro ao deletar naver',
-            description:
-              'Ocorreu um erro ao tentar deletar esse naver, tente novamente.',
-          });
-        }
-      }
-
       openModal({
         title: 'Excluir Naver',
         text: 'Tem certeza que deseja excluir este Naver?',
         okButtonLabel: 'Excluir',
-        onConfirmAction: confirmDeleteNaver,
+        onConfirmAction: () => {
+          confirmDeleteNaver(id);
+        },
       });
     },
-    [openModal, addToast],
+    [openModal, confirmDeleteNaver],
   );
 
   const editNaver = useCallback(
@@ -195,6 +201,7 @@ const NaverProvider: React.FC = ({ children }) => {
         updateNaverList,
         naversList,
         getNaverDetails,
+        confirmDeleteNaver,
       }}
     >
       {children}

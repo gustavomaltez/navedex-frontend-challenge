@@ -8,6 +8,7 @@ import { Container } from './styles';
 import defaultAvatarImage from '../../../assets/images/nave.png';
 import ImageLoader from './ImageLoader';
 import getStringTime from '../../../utils/convertMonthsInStringYearsAndMonths';
+import { useModal } from '../../../hooks/modal';
 
 interface Props {
   data: NaverInfosProps;
@@ -23,7 +24,8 @@ const NaverDetailsModal: React.FC<Props> = ({
   const [willClose, setWillClose] = useState(false);
   const history = useHistory();
 
-  const { deleteNaver } = useNaver();
+  const { confirmDeleteNaver } = useNaver();
+  const { openModal } = useModal();
 
   const ageMonths = differenceInMonths(new Date(), new Date(birthdate));
 
@@ -32,14 +34,22 @@ const NaverDetailsModal: React.FC<Props> = ({
     new Date(admission_date),
   );
 
-  const handleDeleteNaver = useCallback(() => {
-    deleteNaver(id);
-  }, [id, deleteNaver]);
-
-  function handleOnClose() {
+  const handleOnClose = useCallback(() => {
     setWillClose(true);
     setTimeout(onClose, 150);
-  }
+  }, [onClose]);
+
+  const handleDeleteNaver = useCallback(() => {
+    handleOnClose();
+    openModal({
+      title: 'Excluir Naver',
+      text: 'Tem certeza que deseja excluir este Naver?',
+      okButtonLabel: 'Excluir',
+      onConfirmAction: () => {
+        confirmDeleteNaver(id);
+      },
+    });
+  }, [id, confirmDeleteNaver, openModal, handleOnClose]);
 
   const handleEditNaver = useCallback(() => {
     setWillClose(true);
