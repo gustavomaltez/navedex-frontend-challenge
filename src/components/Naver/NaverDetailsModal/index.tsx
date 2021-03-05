@@ -35,11 +35,12 @@ const NaverDetailsModal: React.FC<Props> = ({
     setWillClose(true);
     setTimeout(onClose, 150);
   }
+
   const handleEditNaver = useCallback(() => {
     setWillClose(true);
     setTimeout(() => {
-      onClose();
       history.push(`/edit-naver/${id}`);
+      onClose();
     }, 150);
   }, [history, id, onClose]);
 
