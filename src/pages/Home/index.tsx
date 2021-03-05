@@ -20,9 +20,9 @@ const Home: React.FC = () => {
   }, [updateNaverList]);
 
   const transitions = useTransition(naversList, item => item.id, {
-    from: { transform: 'translate3d(0,-40px,0)' },
-    enter: { transform: 'translate3d(0,0px,0)' },
-    leave: { transform: 'translate3d(0,-40px,0)' },
+    from: { transform: 'translate3d(0,-40px,0)', opacity: 1 },
+    enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
+    leave: { transform: 'translate3d(0,-40px,0)', opacity: 0 },
   });
 
   return (

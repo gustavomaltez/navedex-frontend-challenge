@@ -43,6 +43,7 @@ const bgHide = keyframes`
 interface Props {
   willClose: boolean;
 }
+
 export const Container = styled.div<Props>`
   background: rgba(0, 0, 0, 0.5);
   position: fixed;

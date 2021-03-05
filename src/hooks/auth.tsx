@@ -18,8 +18,8 @@ interface SignInCredentials {
 
 interface AuthContextData {
   user: User;
-  signIn(credentials: SignInCredentials): Promise<void>;
-  signOut(): void;
+  signIn: (credentials: SignInCredentials) => Promise<void>;
+  signOut: () => void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -57,6 +57,7 @@ const AuthProvider: React.FC = ({ children }) => {
   const signOut = useCallback(() => {
     localStorage.removeItem('@NaveDex:token');
     localStorage.removeItem('@NaveDex:user');
+    api.defaults.headers.authorization = null;
 
     setData({} as AuthState);
   }, []);

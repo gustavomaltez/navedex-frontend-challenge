@@ -30,6 +30,7 @@ const Modal: React.FC<Props> = ({
 
   function handleCloseModal() {
     setWillClose(true);
+
     setTimeout(() => {
       if (onCloseAction) {
         onCloseAction();

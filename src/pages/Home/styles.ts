@@ -28,6 +28,7 @@ export const Container = styled.main`
         font-size: 1.1rem;
         transition: transform 200ms;
       }
+
       &:hover {
         p {
           transform: translateX(0.5rem);

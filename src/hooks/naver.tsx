@@ -31,8 +31,8 @@ const NaverContext = createContext({} as NaverContextData);
 const NaverProvider: React.FC = ({ children }) => {
   const [naversList, setNaversList] = useState<NaverInfosProps[]>([]);
 
-  const { openModal } = useModal();
   const history = useHistory();
+  const { openModal } = useModal();
   const { addToast } = useToast();
 
   const addNaver = useCallback(
@@ -53,7 +53,9 @@ const NaverProvider: React.FC = ({ children }) => {
           project,
           url,
         });
+
         const newNaver = response.data;
+
         openModal({
           title: 'Naver criado',
           text: 'Naver criado com sucesso',
@@ -68,7 +70,7 @@ const NaverProvider: React.FC = ({ children }) => {
           type: 'error',
           title: 'Erro ao adicionar naver',
           description:
-            'Ocorreu um erro ao tentar adicionar esse naver, tente novamente. Verifique os campos.',
+            'Ocorreu um erro ao tentar adicionar esse naver. Verifique os campos e tente novamente.',
         });
       }
     },
@@ -96,8 +98,9 @@ const NaverProvider: React.FC = ({ children }) => {
           type: 'error',
           title: 'Erro ao buscar naver',
           description:
-            'Ocorreu um erro ao tentar obter as informações desse naver. Verifique os campos.',
+            'Ocorreu um erro ao tentar obter as informações desse naver.',
         });
+
         return {} as NaverInfosProps;
       }
     },
@@ -108,6 +111,7 @@ const NaverProvider: React.FC = ({ children }) => {
     async (id: string): Promise<void> => {
       try {
         await api.delete(`/navers/${id}`);
+
         openModal({
           title: 'Naver excluído',
           text: 'Naver excluído com sucesso!',
@@ -170,6 +174,7 @@ const NaverProvider: React.FC = ({ children }) => {
         });
 
         setNaversList(updatedNaversList);
+
         openModal({
           title: 'Naver atualizado',
           text: 'Naver atualizado com sucesso',
@@ -186,12 +191,13 @@ const NaverProvider: React.FC = ({ children }) => {
         });
       }
     },
-    [history, openModal, addToast],
+    [history, openModal, addToast, naversList],
   );
 
   const updateNaverList = useCallback(async () => {
     try {
       const response = await api.get('/navers');
+
       setNaversList(response.data);
     } catch (error) {
       addToast({
@@ -224,7 +230,7 @@ function useNaver(): NaverContextData {
   const context = useContext(NaverContext);
 
   if (!context) {
-    throw new Error('useNaver must be used within an NaverProvider');
+    throw new Error('useNaver must be used within a NaverProvider');
   }
 
   return context;

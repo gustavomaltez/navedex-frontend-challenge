@@ -21,8 +21,8 @@ const NaverInfos: React.FC<Props> = ({ label, onSubmit, id }) => {
 
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
-
   const { getNaverDetails } = useNaver();
+
   function handleGoBack() {
     history.goBack();
   }
@@ -30,6 +30,7 @@ const NaverInfos: React.FC<Props> = ({ label, onSubmit, id }) => {
   const handleHasId = useCallback(async () => {
     if (id) {
       const naverData = await getNaverDetails(id);
+
       setInitialData(naverData);
     }
   }, [id, getNaverDetails]);
@@ -37,6 +38,7 @@ const NaverInfos: React.FC<Props> = ({ label, onSubmit, id }) => {
   useEffect(() => {
     handleHasId();
   }, [handleHasId]);
+
   return (
     <Container>
       <section>

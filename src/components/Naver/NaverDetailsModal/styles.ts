@@ -116,12 +116,15 @@ export const Container = styled.div<Props>`
           color: #e83f5b;
         }
       }
+
       span + span {
         margin-top: 2rem;
       }
 
       span p {
         margin-top: 0.5rem;
+        max-width: 30rem;
+        word-break: break-word;
       }
 
       h1 {

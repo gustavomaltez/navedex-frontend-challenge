@@ -2,13 +2,13 @@ import styled, { keyframes } from 'styled-components';
 
 const shake = keyframes`
   0% {
-        transform: rotateY( 10deg) rotateZ( 1deg);
+        transform: rotateY(10deg) rotateZ(1deg);
   }
   50% {
-      transform: rotateY( -10deg) rotateZ( -1deg);
+      transform: rotateY(-10deg) rotateZ(-1deg);
   }
   100% {
-      transform: rotateY( 10deg) rotateZ( 1deg);
+      transform: rotateY(10deg) rotateZ(1deg);
   }
 `;
 

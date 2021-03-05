@@ -54,13 +54,13 @@ export default createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 0.5rem;
+    height: 0.5rem;
   }
 
   ::-webkit-scrollbar-thumb {
     background: rgba(33,33,33,0.95);
-    border-radius: 0px;
+    border-radius: 0;
   }
 
   ::-webkit-scrollbar-thumb:hover{
@@ -69,7 +69,7 @@ export default createGlobalStyle`
 
   ::-webkit-scrollbar-track{
     background: #ffffff;
-    border-radius: 0px;
+    border-radius: 0;
     box-shadow: inset 7px 10px 12px #f0f0f0;
   }
 `;

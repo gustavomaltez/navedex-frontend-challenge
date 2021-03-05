@@ -22,13 +22,12 @@ const NaverDetailsModal: React.FC<Props> = ({
   const [isLoading, setIsloading] = useState(true);
   const [imageSrc, setImageSrc] = useState(url);
   const [willClose, setWillClose] = useState(false);
-  const history = useHistory();
 
+  const history = useHistory();
   const { confirmDeleteNaver } = useNaver();
   const { openModal } = useModal();
 
   const ageMonths = differenceInMonths(new Date(), new Date(birthdate));
-
   const timeInCompanyMonths = differenceInMonths(
     new Date(),
     new Date(admission_date),
@@ -36,16 +35,17 @@ const NaverDetailsModal: React.FC<Props> = ({
 
   const handleOnClose = useCallback(() => {
     setWillClose(true);
+
     setTimeout(onClose, 150);
   }, [onClose]);
 
   const handleDeleteNaver = useCallback(() => {
-    handleOnClose();
     openModal({
       title: 'Excluir Naver',
       text: 'Tem certeza que deseja excluir este Naver?',
       okButtonLabel: 'Excluir',
       onConfirmAction: () => {
+        handleOnClose();
         confirmDeleteNaver(id);
       },
     });
@@ -53,6 +53,7 @@ const NaverDetailsModal: React.FC<Props> = ({
 
   const handleEditNaver = useCallback(() => {
     setWillClose(true);
+
     setTimeout(() => {
       history.push(`/edit-naver/${id}`);
       onClose();
@@ -68,8 +69,10 @@ const NaverDetailsModal: React.FC<Props> = ({
 
   img.onerror = () => {
     setIsloading(false);
+
     setImageSrc(defaultAvatarImage);
   };
+
   return (
     <Container willClose={willClose}>
       <main>
@@ -80,8 +83,10 @@ const NaverDetailsModal: React.FC<Props> = ({
           <FiX onClick={handleOnClose} />
 
           <span>
-            <h1>{name}</h1>
-            <p>{job_role}</p>
+            <h1>{name.length > 19 ? `${name.substr(0, 19)}...` : name}</h1>
+            <p>
+              {job_role.length > 19 ? `${job_role.substr(0, 19)}...` : job_role}
+            </p>
           </span>
 
           <span>

@@ -5,7 +5,7 @@ import { NaverInfosProps, useNaver } from '../../hooks/naver';
 import { Container } from './styles';
 import defaultAvatarImage from '../../assets/images/nave.png';
 import CardLoader from './CardLoader';
-import { useModal } from '../../hooks/modal';
+import { useNaverDetailsModal } from '../../hooks/naverDetailsModal';
 
 interface Props {
   data: NaverInfosProps;
@@ -17,8 +17,8 @@ const Naver: React.FC<Props> = ({ data, style }) => {
   const [imageSrc, setImageSrc] = useState(url);
   const [isLoading, setIsloading] = useState(true);
 
-  const { openNaverDetailsModal } = useModal();
   const history = useHistory();
+  const { openNaverDetailsModal } = useNaverDetailsModal();
   const { deleteNaver } = useNaver();
 
   const img = new Image();
@@ -54,8 +54,12 @@ const Naver: React.FC<Props> = ({ data, style }) => {
           <button type="button" onClick={handleOpenModal}>
             <img src={imageSrc} alt={name} />
           </button>
-          <strong>{name}</strong>
-          <p>{job_role}</p>
+          <strong>
+            {name.length > 19 ? `${name.substr(0, 19)}...` : name}
+          </strong>
+          <p>
+            {job_role.length > 19 ? `${job_role.substr(0, 19)}...` : job_role}
+          </p>
           <div>
             <FaTrash onClick={handleDeleteNaver} />
             <FaPen onClick={handleEditNaver} />
