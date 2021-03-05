@@ -13,12 +13,24 @@ interface Props {
 
 const Naver: React.FC<Props> = ({ data }) => {
   const [showDetails, setShowDetails] = useState(false);
-  const [url, setUrl] = useState(data.url);
+  const { id, job_role, url, name } = data;
+  const [imageSrc, setImageSrc] = useState(url);
   const [isLoading, setIsloading] = useState(true);
 
   const history = useHistory();
-  const { id, job_role, name } = data;
   const { deleteNaver } = useNaver();
+
+  const img = new Image();
+  img.src = url;
+
+  img.onload = () => {
+    setIsloading(false);
+  };
+
+  img.onerror = () => {
+    setIsloading(false);
+    setImageSrc(defaultAvatarImage);
+  };
 
   function handleCloseModal() {
     setShowDetails(false);
@@ -46,16 +58,7 @@ const Naver: React.FC<Props> = ({ data }) => {
       ) : (
         <Container>
           <button type="button" onClick={handleOpenModal}>
-            <img
-              src={url}
-              alt={name}
-              onLoad={() => {
-                setIsloading(false);
-              }}
-              onError={() => {
-                setUrl(defaultAvatarImage);
-              }}
-            />
+            <img src={imageSrc} alt={name} />
           </button>
           <strong>{name}</strong>
           <p>{job_role}</p>
