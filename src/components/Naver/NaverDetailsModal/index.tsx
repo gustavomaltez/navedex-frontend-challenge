@@ -1,10 +1,12 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import { FiX } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import { differenceInYears } from 'date-fns';
 import { NaverInfosProps, useNaver } from '../../../hooks/naver';
 import { Container } from './styles';
+import defaultAvatarImage from '../../../assets/images/nave.png';
+import ImageLoader from './ImageLoader';
 
 interface Props {
   data: NaverInfosProps;
@@ -15,6 +17,8 @@ const NaverDetailsModal: React.FC<Props> = ({
   data: { id, name, admission_date, birthdate, job_role, project, url },
   onClose,
 }) => {
+  const [isLoading, setIsloading] = useState(true);
+  const [imageSrc, setImageSrc] = useState(url);
   const history = useHistory();
 
   const { deleteNaver } = useNaver();
@@ -29,11 +33,22 @@ const NaverDetailsModal: React.FC<Props> = ({
     history.push(`/edit-naver/${id}`);
   }, [history, id]);
 
+  const img = new Image();
+  img.src = url;
+
+  img.onload = () => {
+    setIsloading(false);
+  };
+
+  img.onerror = () => {
+    setIsloading(false);
+    setImageSrc(defaultAvatarImage);
+  };
   return (
     <Container>
       <main>
         <section>
-          <img src={url} alt={name} />
+          {isLoading ? <ImageLoader /> : <img src={imageSrc} alt={name} />}
         </section>
         <section>
           <FiX onClick={onClose} />
