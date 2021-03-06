@@ -1,6 +1,14 @@
 
 <br />
 <p align="center">
+  <img alt="Repository size" src="https://img.shields.io/github/languages/code-size/gustavomaltez/navedex-frontend-challenge?style=for-the-badge">
+  <img alt="Language" src="https://img.shields.io/github/languages/top/gustavomaltez/navedex-frontend-challenge?style=for-the-badge">
+  <img alt="Total Lines" src="https://img.shields.io/tokei/lines/github/gustavomaltez/navedex-frontend-challenge?style=for-the-badge">
+  <img alt="Last commit" src="https://img.shields.io/github/last-commit/gustavomaltez/navedex-frontend-challenge?style=for-the-badge">
+  <img alt="Dependencies" src="https://img.shields.io/david/gustavomaltez/navedex-frontend-challenge?style=for-the-badge">
+  <img alt="License" src="https://img.shields.io/github/license/gustavomaltez/navedex-frontend-challenge?style=for-the-badge">
+</p>
+<p align="center">
   <a href="https://nave.rs">
     <img src="docs/logo.svg" alt="Logo" width="100%" height="80">
   </a>
@@ -83,6 +91,7 @@ Esse projeto também utiliza o guia de estilos do airbnb.
 ## 📚 Bibliotecas utilizadas
 Para o desenvolvimento desse projeto foram utilizadas algumas bibliotecas para permitir uma maior personalização.
 * [axios](https://www.npmjs.com/package/axios) - Para requisições http.
+* [unform](https://unform.dev/) - Para criação de formulários de forma performática.
 * [date-fns](https://www.npmjs.com/package/date-fns) - Para conversão de datas e cálculo de tempo.
 * [react-content-loader](https://www.npmjs.com/package/react-content-loader) - Para as animações de pré-carregamento dos cards.
 * [react-icons](https://www.npmjs.com/package/react-icons) - Para os icones utilizados.
