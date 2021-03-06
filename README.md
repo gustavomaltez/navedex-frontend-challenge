@@ -33,7 +33,7 @@
 </details>
 
 ## 🧷 Sobre o projeto
-Esse projeto foi desenvolvido como um [desafio para a vaga de desenvolvedor front-end](https://github.com/naveteam/front-end-challenge) na empresa [nave.rs](https://nave.rs/). Ele consiste basicamente em em uma web app para visualização e criação dos navers, possuindo informações como: nomes, idades, cargos, tempo de empresa e projetos que participou. Todo o design da aplicação foi feito seguindo fielmente os [protótipos do figma](https://www.figma.com/file/II8UDFm2uJFZaD0FOPcinP/Teste-Fornt-End) disponibilizados.
+Esse projeto foi desenvolvido como um [desafio para a vaga de desenvolvedor front-end](https://github.com/naveteam/front-end-challenge) na empresa [nave.rs](https://nave.rs/). Ele consiste basicamente em uma web app para visualização e criação dos navers, possuindo informações como: nomes, idades, cargos, tempo de empresa e projetos que participou. Todo o design da aplicação foi feito seguindo fielmente os [protótipos do figma](https://www.figma.com/file/II8UDFm2uJFZaD0FOPcinP/Teste-Fornt-End) disponibilizados.
 
 ## 💡 Diferenciais
 * Aplicação totalmente responsiva.
