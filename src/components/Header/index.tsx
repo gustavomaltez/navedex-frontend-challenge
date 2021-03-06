@@ -19,8 +19,9 @@ const Header: React.FC = () => {
       <button type="button" onClick={handleGoHome}>
         <img src={logoImg} alt="Logo" />
       </button>
+
       <button type="button" onClick={signOut}>
-        Sair
+        <p>Sair</p>
       </button>
     </Container>
   );

@@ -20,8 +20,11 @@ export const Container = styled.header`
   padding: 2rem 3rem;
 
   button:first-child {
-    cursor: pointer;
     width: 20vw;
+  }
+
+  button {
+    cursor: pointer;
     max-width: 200px;
     background: transparent;
   }
@@ -40,6 +43,11 @@ export const Container = styled.header`
     font-size: 1rem;
     cursor: pointer;
     transition: transform 200ms;
+
+    @media (max-width: 500px) {
+      width: 20vw;
+      font-size: 1.5rem;
+    }
 
     &:hover {
       transform: scale(1.1);
