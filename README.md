@@ -5,7 +5,6 @@
   <img alt="Language" src="https://img.shields.io/github/languages/top/gustavomaltez/navedex-frontend-challenge?style=for-the-badge">
   <img alt="Total Lines" src="https://img.shields.io/tokei/lines/github/gustavomaltez/navedex-frontend-challenge?style=for-the-badge">
   <img alt="Last commit" src="https://img.shields.io/github/last-commit/gustavomaltez/navedex-frontend-challenge?style=for-the-badge">
-  <img alt="Dependencies" src="https://img.shields.io/david/gustavomaltez/navedex-frontend-challenge?style=for-the-badge">
   <img alt="License" src="https://img.shields.io/github/license/gustavomaltez/navedex-frontend-challenge?style=for-the-badge">
 </p>
 <p align="center">
@@ -133,9 +132,6 @@ Em primeiro lugar, o desenvolvimento desse projeto foi de grande aprendizado par
 
 2. Datas
  - A questão das datas nesse projeto de início é um pouco confusa. Por exemplo: no protótipo é possivel ver que temos os campos de Idade e Tempo de empresa, entretanto, essas informações devem ser enviadas para api no formato dd/mm/aaaa, mas para o usuário final subentende-se que idade é para ser um número e não uma data, o mesmo vale para tempo de empresa. Claro que guardar idade em anos no banco de dados não é uma boa prática, o correto seria utilizar uma data mesmo, sendo assim seria interessante para o usuário final que os campos de "Idade" e "Tempo de empresa" fossem substituidos respectivamente por "Data de nascimento" e "Data de entrada na empresa". Entretanto, para seguir o formato do protótipo e manter a conformidade com os valores recebidos pela api, deixei a nomenclatura identica ao protótipo, defini esses campos como o tipo data e utilizei algumas funções para converter o valor do form para o formato de data pt-br dd/mm/aaaa. Um outro problema é que ao receber as informações de um naver, os campos de data são retornados no formato "aaaa-mm-dd'T'HH:mm:ss.SSS'Z'", sendo preciso utilizar algumas funções para converter esse tempo em meses (baseado no dia atual) e posteriormente exibi-las na tela no formato "X anos e Y meses".
-
-## 📧 Contato
-Para quaisquer dúvidas quanto ao projeto, sinta-se a vontade para entrar em contato comigo via e-mail: gustavomaltez.dev@gmail.com ou [linkedin](https://www.linkedin.com/in/gustavommaltez/). Se você também está participando desse desafio e está com alguma dificuldade, será um prazer te ajudar, utilize os meios de contato anteriores ou me chame no discord (Gustavo Maltez#8603).
 
 ## 📄 Licença
 Esse software está sob a licença MIT. Veja o arquivo `LICENSE` para mais informações.
