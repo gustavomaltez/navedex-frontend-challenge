@@ -34,7 +34,6 @@
     <li><a href="#-instalação">Instalação</a></li>
     <li><a href="#-tempo-de-desenvolvimento">Tempo de desenvolvimento</a></li>
     <li><a href="#-dificuldades-e-aprendizados">Dificuldades e aprendizados</a></li>
-    <li><a href="#-contato">Contato</a></li>
     <li><a href="#-licença">Licença</a></li>
   </ol>
 </details>
@@ -135,5 +134,3 @@ Em primeiro lugar, o desenvolvimento desse projeto foi de grande aprendizado par
 
 ## 📄 Licença
 Esse software está sob a licença MIT. Veja o arquivo `LICENSE` para mais informações.
-
-
